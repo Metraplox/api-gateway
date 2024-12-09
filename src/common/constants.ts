@@ -11,6 +11,7 @@ export enum CoursesMSG {
   UPDATE = 'UPDATE',
   DELETE = 'DELETE',
   FIND_BY_CATEGORY = 'FIND_BY_CATEGORY',
+  RATE_COURSE = 'RATE_COURSE',
 }
 
 export enum UserMSG {

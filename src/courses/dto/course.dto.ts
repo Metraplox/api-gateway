@@ -3,7 +3,7 @@ import {
   IsNumber,
   IsOptional,
   IsPositive,
-  IsString,
+  IsString, Max,
   Min,
 } from 'class-validator';
 
@@ -57,4 +57,18 @@ export class UpdateCourseDto {
   @IsString()
   @IsOptional()
   classes?: string[];
+
+  @IsNumber()
+  @IsOptional()
+  @Min(1)
+  @Max(5)
+  rating?: number;
+}
+
+export class RateDto {
+  @IsNumber()
+  @IsNotEmpty()
+  @Min(1)
+  @Max(5)
+  rating: number;
 }
