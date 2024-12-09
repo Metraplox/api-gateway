@@ -45,4 +45,8 @@ export class CoursesController {
   deleteCourse(@Param() id: string): Observable<any> {
     return this._clientProxyCourses.send(CoursesMSG.DELETE, { id });
   }
+
+  findByCategory(@Param('category') category: string): Observable<any> {
+    return this._clientProxyCourses.send(CoursesMSG.FIND_BY_CATEGORY, category);
+  }
 }
