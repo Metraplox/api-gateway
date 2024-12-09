@@ -9,19 +9,22 @@ import {
 import { UserDTO } from 'src/user/dto/user.dto';
 import { AuthService } from './auth.service';
 import { RefreshTokenGuard } from './guards/refresh.guard';
+import { LoginUserDto, RegisterUserDto } from './dto/auth.dto';
 
 @Controller('auth')
 export class AuthController {
   constructor(private readonly authService: AuthService) {}
 
   @Post('login')
-  async login(@Req() req) {
-    return await this.authService.login({ ...req.body });
+  async login(@Body() loginUserInput: LoginUserDto) {
+    return await this.authService.login({ ...loginUserInput });
   }
 
   @Post('register')
-  async register(@Body() userDTO: UserDTO) {
-    return await this.authService.register(userDTO);
+  async register(@Body() registerUserInput: RegisterUserDto) {
+    return await this.authService.register({
+      ...registerUserInput,
+    });
   }
 
   @Post('update-jwt')

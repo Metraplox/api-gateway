@@ -7,11 +7,11 @@ import {
 import { ConfigType } from '@nestjs/config';
 import { JwtService } from '@nestjs/jwt';
 import * as bcrypt from 'bcrypt';
-import { firstValueFrom } from 'rxjs';
+import { firstValueFrom, Observable } from 'rxjs';
 import { UserMSG } from 'src/common/constants';
 import { ClientProxyApp } from 'src/common/proxy/client-proxy';
 import config from 'src/config';
-import { LoginUserDto, RegisterUserDto } from 'src/user/dto/user.dto';
+import { LoginUserDto, RegisterUserDto } from './dto/auth.dto';
 
 @Injectable()
 export class AuthService {
@@ -101,11 +101,8 @@ export class AuthService {
     }
   }
 
-  async register(registerDto: RegisterUserDto) {
-    const result = await firstValueFrom(
-      this._clientProxyUser.send(UserMSG.CREATE, registerDto),
-    );
-    return result;
+  register(registerDto: RegisterUserDto): Observable<any> {
+    return this._clientProxyUser.send(UserMSG.CREATE, registerDto);
   }
 
   async refresh(refreshToken: string) {
