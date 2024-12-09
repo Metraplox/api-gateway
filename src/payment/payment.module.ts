@@ -1,9 +1,9 @@
 import { Module } from '@nestjs/common';
-import { MatchController } from './match.controller';
 import { ProxyModule } from 'src/common/proxy/proxy.module';
+import { PaymentController } from './payment.controller';
 
 @Module({
   imports: [ProxyModule],
-  controllers: [MatchController],
+  controllers: [PaymentController],
 })
-export class MatchModule {}
+export class PaymentModule {}

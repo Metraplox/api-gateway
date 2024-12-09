@@ -9,7 +9,7 @@ import config from 'src/config';
 import { RabbitMQ } from '../constants';
 
 @Injectable()
-export class ClientProxyAhora {
+export class ClientProxyApp {
   constructor(
     @Inject(config.KEY)
     private readonly configService: ConfigType<typeof config>,
@@ -26,38 +26,24 @@ export class ClientProxyAhora {
     });
   }
 
-  clientProxyPlayers(): ClientProxy {
+  clientProxyCourses(): ClientProxy {
     const amqpUrl = this.configService.rabbitMQ.amqpUrl;
-
     return ClientProxyFactory.create({
       transport: Transport.RMQ,
       options: {
         urls: [amqpUrl],
-        queue: RabbitMQ.PlayerQueue,
+        queue: RabbitMQ.CoursesQueue,
       },
     });
   }
 
-  clientProxyTeams(): ClientProxy {
+  clientProxyPayment(): ClientProxy {
     const amqpUrl = this.configService.rabbitMQ.amqpUrl;
-
     return ClientProxyFactory.create({
       transport: Transport.RMQ,
       options: {
         urls: [amqpUrl],
-        queue: RabbitMQ.TeamQueue,
-      },
-    });
-  }
-
-  clientProxyMatches(): ClientProxy {
-    const amqpUrl = this.configService.rabbitMQ.amqpUrl;
-
-    return ClientProxyFactory.create({
-      transport: Transport.RMQ,
-      options: {
-        urls: [amqpUrl],
-        queue: RabbitMQ.MatchQueue,
+        queue: RabbitMQ.PaymentQueue,
       },
     });
   }

@@ -9,7 +9,7 @@ import { JwtService } from '@nestjs/jwt';
 import * as bcrypt from 'bcrypt';
 import { firstValueFrom } from 'rxjs';
 import { UserMSG } from 'src/common/constants';
-import { ClientProxyAhora } from 'src/common/proxy/client-proxy';
+import { ClientProxyApp } from 'src/common/proxy/client-proxy';
 import config from 'src/config';
 import { LoginUserDto, RegisterUserDto } from 'src/user/dto/user.dto';
 
@@ -18,7 +18,7 @@ export class AuthService {
   constructor(
     @Inject(config.KEY)
     private readonly configService: ConfigType<typeof config>,
-    private readonly clientProxy: ClientProxyAhora,
+    private readonly clientProxy: ClientProxyApp,
     private readonly jwtService: JwtService,
   ) {}
 

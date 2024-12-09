@@ -1,8 +1,8 @@
 import { Module } from '@nestjs/common';
-import { ClientProxyAhora } from './client-proxy';
+import { ClientProxyApp } from './client-proxy';
 
 @Module({
-  providers: [ClientProxyAhora],
-  exports: [ClientProxyAhora],
+  providers: [ClientProxyApp],
+  exports: [ClientProxyApp],
 })
 export class ProxyModule {}

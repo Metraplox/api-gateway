@@ -1,9 +1,9 @@
 import { Module } from '@nestjs/common';
-import { TeamController } from './team.controller';
 import { ProxyModule } from 'src/common/proxy/proxy.module';
+import { CoursesController } from './courses.controller';
 
 @Module({
   imports: [ProxyModule],
-  controllers: [TeamController],
+  controllers: [CoursesController],
 })
-export class TeamModule {}
+export class CoursesModule {}

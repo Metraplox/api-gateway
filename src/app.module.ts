@@ -1,12 +1,13 @@
 import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
-import * as Joi from 'joi';
-import { AuthModule } from './auth/auth.module';
-import config from './config';
+
 import { UserModule } from './user/user.module';
-import { PlayerModule } from './player/player.module';
-import { TeamModule } from './team/team.module';
-import { MatchModule } from './match/match.module';
+import { AuthModule } from './auth/auth.module';
+import { PaymentModule } from './payment/payment.module';
+import { CoursesModule } from './courses/courses.module';
+
+import * as Joi from 'joi';
+import config from './config';
 
 @Module({
   imports: [
@@ -29,9 +30,8 @@ import { MatchModule } from './match/match.module';
     }),
     UserModule,
     AuthModule,
-    PlayerModule,
-    TeamModule,
-    MatchModule,
+    PaymentModule,
+    CoursesModule,
   ],
 })
 export class AppModule {}

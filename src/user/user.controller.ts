@@ -12,13 +12,13 @@ import { Observable } from 'rxjs';
 import { UserMSG } from 'src/common/constants';
 import { IUser } from 'src/common/interfaces/user.interface';
 import { UserDTO } from './dto/user.dto';
-import { ClientProxyAhora } from 'src/common/proxy/client-proxy';
+import { ClientProxyApp } from 'src/common/proxy/client-proxy';
 
 @ApiTags('users')
 //@UseGuards(JwtAuthGuard)
 @Controller('user')
 export class UserController {
-  constructor(private readonly clientProxy: ClientProxyAhora) {}
+  constructor(private readonly clientProxy: ClientProxyApp) {}
   private _clientProxyUser = this.clientProxy.clientProxyUsers();
 
   @Post('create')
