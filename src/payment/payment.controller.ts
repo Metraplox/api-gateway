@@ -1,4 +1,4 @@
-import { Controller, Post } from '@nestjs/common';
+import { Controller, Get, Param, Post } from '@nestjs/common';
 import { Payload } from '@nestjs/microservices';
 import { firstValueFrom, Observable } from 'rxjs';
 import { PaymentMSG } from 'src/common/constants';
@@ -41,5 +41,15 @@ export class PaymentController {
         ...checkPaymentInput,
       }),
     );
+  }
+
+  @Get('transactions')
+  findAll(): Observable<any> {
+    return this._clientProxyPayment.send(PaymentMSG.TRANSACTIONS, {});
+  }
+
+  @Get('transaction/:order')
+  findTransaction(@Param('order') order: string): Observable<any> {
+    return this._clientProxyPayment.send(PaymentMSG.GET_TRANSACTION, { order });
   }
 }
