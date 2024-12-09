@@ -14,6 +14,7 @@ async function bootstrap() {
   app.useGlobalFilters(new AllExceptionFilter());
   // app.useGlobalInterceptors(new TimeOutInterceptor());
   app.setGlobalPrefix('api/v2');
+  app.enableCors();
 
   const options = new DocumentBuilder()
     .setTitle('WebMovil API 2024')
