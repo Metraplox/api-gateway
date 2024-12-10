@@ -47,4 +47,15 @@ export class ClientProxyApp {
       },
     });
   }
+
+  clientProxyChatbot(): ClientProxy {
+    const amqpUrl = this.configService.rabbitMQ.amqpUrl;
+    return ClientProxyFactory.create({
+      transport: Transport.RMQ,
+      options: {
+        urls: [amqpUrl],
+        queue: RabbitMQ.ChatbotQueue,
+      },
+    });
+  }
 }

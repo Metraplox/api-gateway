@@ -2,7 +2,7 @@ import { Body, Controller, Get, Param, Post } from '@nestjs/common';
 import { firstValueFrom, Observable } from 'rxjs';
 import { CoursesMSG } from 'src/common/constants';
 import { ClientProxyApp } from 'src/common/proxy/client-proxy';
-import { CreateCourseDto, UpdateCourseDto } from './dto/course.dto';
+import {CreateCourseDto, RateDto, UpdateCourseDto} from './dto/course.dto';
 import { IUser } from 'src/common/interfaces/user.interface';
 
 @Controller('courses')
@@ -46,7 +46,19 @@ export class CoursesController {
     return this._clientProxyCourses.send(CoursesMSG.DELETE, { id });
   }
 
+  @Get('category/:category')
   findByCategory(@Param('category') category: string): Observable<any> {
     return this._clientProxyCourses.send(CoursesMSG.FIND_BY_CATEGORY, category);
+  }
+
+  @Post(':id/rate')
+  rateCourse(
+      @Param('id') id: string,
+      @Body() rateDto: RateDto,
+  ): Observable<any> {
+    return this._clientProxyCourses.send(CoursesMSG.RATE_COURSE, {
+      id,
+      rating: rateDto.rating,
+    });
   }
 }
