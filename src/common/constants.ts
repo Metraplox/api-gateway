@@ -2,6 +2,7 @@ export enum RabbitMQ {
   CoursesQueue = 'courses_queue',
   UserQueue = 'user_queue',
   PaymentQueue = 'payment_queue',
+  ChatbotQueue = 'chatbot_queue',
 }
 
 export enum CoursesMSG {
@@ -22,4 +23,8 @@ export enum UserMSG {
   DELETE = 'DELETE',
   VALID_USER = 'VALID_USER',
   FIND_EMAIL = 'FIND_EMAIL',
+}
+
+export enum ChatbotMSG {
+    MESSAGE = 'MESSAGE',
 }

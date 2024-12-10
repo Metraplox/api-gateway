@@ -5,6 +5,8 @@ import { UserModule } from './user/user.module';
 import { AuthModule } from './auth/auth.module';
 import { PaymentModule } from './payment/payment.module';
 import { CoursesModule } from './courses/courses.module';
+import { ChatbotController } from './chatbot/chatbot.controller';
+import { ChatbotModule } from './chatbot/chatbot.module';
 
 import * as Joi from 'joi';
 import config from './config';
@@ -32,6 +34,7 @@ import config from './config';
     AuthModule,
     PaymentModule,
     CoursesModule,
+    ChatbotModule,
   ],
 })
 export class AppModule {}
