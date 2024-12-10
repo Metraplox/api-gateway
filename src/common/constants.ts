@@ -32,6 +32,7 @@ export enum UserMSG {
   VALID_USER = 'VALID_USER',
   FIND_EMAIL = 'FIND_EMAIL',
   CREATE_GUEST = 'CREATE_GUEST',
+  GET_TRANSACTIONS = 'GET_TRANSACTIONS',
 }
 
 export enum ChatbotMSG {
