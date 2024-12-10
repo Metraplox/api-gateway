@@ -17,7 +17,7 @@ COPY . .
 RUN npm run build
 
 # Etapa 2: Producción
-FROM node:20.12.2-alpine
+FROM node:20.12.2-alpine AS production
 
 # Crear directorio de la aplicación
 WORKDIR /usr/src/app
@@ -34,8 +34,5 @@ COPY .env* ./
 
 ENV NODE_ENV=production
 
-# Exponer el puerto en el que se ejecutará la aplicación
-EXPOSE 3000
-
 # Iniciar el servidor usando la construcción de producción
-CMD ["npm", "run", "start:prod"]
+CMD ["npm", "run", "start:prod"]    
