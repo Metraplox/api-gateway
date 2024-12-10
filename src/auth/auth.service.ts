@@ -102,8 +102,9 @@ export class AuthService {
     }
   }
 
-  register(registerDto: RegisterUserDto): Observable<any> {
-    return this._clientProxyUser.send(UserMSG.CREATE, registerDto);
+  register(registerDto: RegisterUserDto, isGuest: boolean = false): Observable<any> {
+    const message = isGuest ? UserMSG.CREATE_GUEST : UserMSG.CREATE;
+    return this._clientProxyUser.send(message, registerDto);
   }
 
   async refresh(refreshToken: string) {
@@ -126,4 +127,5 @@ export class AuthService {
       throw new UnauthorizedException('Invalid refresh token');
     }
   }
+
 }

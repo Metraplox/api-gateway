@@ -22,9 +22,7 @@ export class AuthController {
 
   @Post('register')
   async register(@Body() registerUserInput: RegisterUserDto) {
-    return await this.authService.register({
-      ...registerUserInput,
-    });
+    return await this.authService.register(registerUserInput, false);
   }
 
   @Post('update-jwt')
@@ -46,5 +44,10 @@ export class AuthController {
         error: (error as Record<string, string>)?.message,
       };
     }
+  }
+
+  @Post('guest-register')
+  async guestRegister(@Body() registerUserInput: RegisterUserDto) {
+    return await this.authService.register(registerUserInput, true);
   }
 }
